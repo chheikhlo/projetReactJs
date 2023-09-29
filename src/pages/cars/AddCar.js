@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 const AddCar = () => {
     const [dataCar, setdataCar] = useState({});
     //pour faire un map sur lui
     const [brands, setBrands] = useState([]);
+    const { t } = useTranslation();
 
     useEffect(() => {
         axios.get('https://formation.inow.fr/demo/api/v1/brands')
@@ -22,11 +24,11 @@ const AddCar = () => {
         setdataCar({ ...dataCar, [name]: value });
     };
 
-    //Conversion de prix en float 
+    //Conversion de {t('prix')} en float 
     const priceConvert = parseFloat(dataCar.price)
     dataCar.price = priceConvert;
 
-    //Conversion de Id marque en int
+    //Conversion de Id {t('mark')} en int
     const brandIdConvert = parseInt(dataCar.brandID)
     dataCar.brandID = brandIdConvert;
 
@@ -39,7 +41,7 @@ const AddCar = () => {
         <Form onSubmit={handleSubmit}>
             <br /><br />
             <Form.Group controlId="model">
-                <Form.Label>Nom (model)</Form.Label>
+                <Form.Label>{t('nomVoit')}</Form.Label>
                 <Form.Control
                     type="text"
                     name="model"
@@ -50,7 +52,7 @@ const AddCar = () => {
             </Form.Group>
 
             <Form.Group controlId="dateOfCirculation">
-                <Form.Label>Date de mise en circulation</Form.Label>
+                <Form.Label>{t('dateMiseCirc')}</Form.Label>
                 <Form.Control
                     type="date"
                     name="dateOfCirculation"
@@ -61,7 +63,7 @@ const AddCar = () => {
             </Form.Group>
 
             <Form.Group controlId="price">
-                <Form.Label>Prix</Form.Label>
+                <Form.Label>{t('prix')}</Form.Label>
                 <Form.Control
                     type="number"
                     name="price"
@@ -72,7 +74,7 @@ const AddCar = () => {
             </Form.Group>
 
             <Form.Group controlId="brandID">
-                <Form.Label>Marque</Form.Label>
+                <Form.Label>{t('mark')}</Form.Label>
                 <Form.Control
                     as="select"
                     name="brandID"
@@ -80,7 +82,7 @@ const AddCar = () => {
                     onChange={handleInputChange}
                     required
                 >
-                    <option value="">Sélectionnez une marque</option>
+                    <option value="">{t('selectMark')}</option>
                     {brands.map(brand => (
                         <option key={brand.id} value={brand.id}>{brand.name}</option>
                     ))}
@@ -88,7 +90,7 @@ const AddCar = () => {
             </Form.Group>
             <br />
             <Button variant="primary" type="submit">
-                Créer Voiture
+                {t('createVoit')}
             </Button>
         </Form>
     );

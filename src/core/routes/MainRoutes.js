@@ -2,10 +2,10 @@ import { Navigate, Route, Routes } from "react-router";
 import BrandList from "../../pages/home/BrandsList";
 import BrandDetails from "../../pages/home/BrandDetails";
 import CarsList from "../../pages/cars/CarsList";
-import PutCar from "../../pages/cars/PutCar";
 import DeleteCar from "../../pages/cars/DeleteCar";
 import AddCar from "../../pages/cars/AddCar";
 import Login from "../../pages/authentication/Login";
+import PutCar from "../../pages/cars/PutCar";
 
 
 const MainRoutes = () => {

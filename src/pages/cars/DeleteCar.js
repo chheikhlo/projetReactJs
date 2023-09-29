@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { useTranslation } from 'react-i18next';
 
 const DeleteCar = () => {
     const { id } = useParams();
     const [, setCar] = useState([]);
+    const { t } = useTranslation();
 
     useEffect(() => {
         axios.delete(`https://formation.inow.fr/demo/api/v1/cars/${id}`).then(resp => {
@@ -16,7 +18,7 @@ const DeleteCar = () => {
     }, [])
 
     return (
-        <h4>Voiture Supprimé</h4>
+        <h4>{t('deleteCar')}</h4>
     );
 }
 

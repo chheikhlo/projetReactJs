@@ -3,11 +3,13 @@ import { Table } from "react-bootstrap";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { UserContext } from "../../core/contexts/AuthContext";
+import { useTranslation } from 'react-i18next';
 
 const CarList = () => {
     const [user, setUser] = useContext(UserContext);
     const [cars, setCars] = useState([]);
     const [brands, setBrands] = useState([]);
+    const { t } = useTranslation();
 
     useEffect(() => {
         axios.get('https://formation.inow.fr/demo/api/v1/cars').then(resp => {
@@ -27,42 +29,47 @@ const CarList = () => {
 
     return (
         <div>
-            <h1>Liste des voitures</h1>
+            <h1>{t('listVoit')}</h1>
             <div class="d-flex justify-content-end" >
                 <div class="text-right " >
-                    <h4>Ajouter Voiture</h4>
+                    <h4>{t('addVoit')}</h4>
                     {!user ?
                         <Link to={`/car`} className="btn btn-primary">
-                            Ajouter
+                            {t('add')}
                         </Link> :
                         <Link to={`/car/add`} className="btn btn-primary">
-                            Ajouter
+                            {t('add')}
                         </Link>
                     }
                 </div>
             </div>
             <Table>
                 <thead>
-                    <tr><th>Nom</th><th>Marque</th><th></th></tr>
+                    <tr><th>{t('nom')}</th><th>{t('mark')}</th><th></th></tr>
                 </thead>
                 <tbody>
                     {cars?.map((car, index) =>
                         <tr key={index}>
                             <td>{car.model}</td>
                             <td>
-                                {brands.find(brand => brand.id === car.brandID ? brand.name : <></>)}
+                                {brands.find(brand => brand.id === car.brandID) ?
+                                    brands.find(brand => brand.id === car.brandID).name
+                                    :
+                                    <></>
+                                }
                             </td>
+
                             <td>
                                 {user ?
                                     <Link to={`/car/put/${car.id}`} className="btn btn-primary">
-                                        Modifier
+                                        {t('modif')}
                                     </Link> : <></>
                                 }
                             </td>
                             <td>
                                 {user ?
                                     <Link to={`/car/delete/${car.id}`} className="btn btn-primary">
-                                        Supprimer
+                                        {t('delet')}
                                     </Link> : <></>
                                 }
                             </td>
