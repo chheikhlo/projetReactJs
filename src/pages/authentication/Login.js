@@ -8,15 +8,14 @@ import { useTranslation } from 'react-i18next';
 const Login = () => {
 
     const [userLog, setUserLog] = useState({ email: '', password: '' });
-    const [, setUser] = useContext(UserContext);
+    const [user, setUser] = useContext(UserContext);
     const { t } = useTranslation();
 
     const submit = (ev) => {
         ev.preventDefault();
         //appel et retour serveur auth
-        let u = { lastname: 'Leponge', firstname: 'Bob', mail: userLog.email };
+        let u = {  mail: userLog.email };
         setUser(u);
-
     }
 
     const changeFormField = (ev) => {
@@ -28,7 +27,7 @@ const Login = () => {
 
     return (
         <div>
-            <h1>Connexion</h1>
+            <h1>{t('conn')}</h1>
             <Form noValidate onSubmit={submit}>
 
                 <InputMail label="Login" placeholder="Votre login"
@@ -36,10 +35,8 @@ const Login = () => {
                 <InputPassword label="Mot de passe" placeholder="Votre mot de passe"
                     onChange={changeFormField} name="password" />
 
-                <Button variant="primary" type="submit">{t('conn')}</Button>
+                <Button variant="primary" type="submit">{t('connn')}</Button>
             </Form>
-            <p>{userLog.email}</p>
-            <p>{userLog.password}</p>
         </div>
     )
 }

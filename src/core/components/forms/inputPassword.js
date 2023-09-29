@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Form } from "react-bootstrap";
 import { useTranslation } from 'react-i18next';
 
-const regEx = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+export const regEx = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
 
 const InputPassword = ({ label, onChange, ...other }) => {
 

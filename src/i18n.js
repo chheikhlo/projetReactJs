@@ -36,7 +36,10 @@ i18n
                     deleteCar: "Car Deleted",
                     img: "Image",
                     detail: "Detail",
-                    listMark: "List of brands"
+                    listMark: "List of brands",
+                    voitMark: "Cars for this brand",
+                    foot: "This is the footer",
+                    notFound: "This page does not exist"
                 }
             },
             fr: {
@@ -63,8 +66,10 @@ i18n
                     deleteCar: "Voiture Supprimé",
                     img: "Image",
                     detail: "Détail",
-                    listMark: "Liste des marques"
-
+                    listMark: "Liste des marques",
+                    voitMark: "Voitures de cette marque",
+                    foot: "Voici le footer",
+                    notFound: "Cette page n'existe pas"
                 }
             }
         },

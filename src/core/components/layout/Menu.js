@@ -3,7 +3,7 @@ import { Container, Button, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../contexts/AuthContext";
 import { useTranslation } from 'react-i18next';
-import i18n from '../../../i18n'; // Importez le fichier de configuration i18n
+import i18n from '../../../i18n';
 
 const Menu = () => {
     const [user, setUser] = useContext(UserContext);
@@ -34,8 +34,8 @@ const Menu = () => {
                         }
                     </Nav>
                     <div>
-                        <button onClick={() => changeLanguage('en')}>English</button>
-                        <button onClick={() => changeLanguage('fr')}>Français</button>
+                        <Button className="btn btn-secondary" onClick={() => changeLanguage('en')}>En</Button>
+                        &nbsp;&nbsp;<Button className="btn btn-secondary" onClick={() => changeLanguage('fr')}>Fr</Button>
                     </div>
                 </Navbar.Collapse>
             </Container>
